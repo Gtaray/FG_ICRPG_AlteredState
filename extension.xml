@@ -15,10 +15,14 @@
 		<includefile source="campaign/record_char_main.xml" />
 		<includefile source="campaign/template_char.xml" />
 
+		<!-- Graphics -->
+		<includefile source="graphics/graphics_icons.xml" />
+
 		<!-- Strings -->
 		<includefile source="strings/strings.xml" />
 
 		<!-- Scripts -->
 		<script name="ActionRage" file="scripts/manager_action_rage.lua" />
+		<script name="ActionRage" file="scripts/manager_action_surge.lua" />
 	</base>
 </root>

@@ -60,11 +60,37 @@
     </template>
 
     <template name="number_surge">
-        <number_linked>
+        <simpledice>
             <anchored position="belowright" offset="50,10" width="30" height="22" />
             <frame name="fielddark" offset="7,5,7,5" />
-            <rollable />
-        </number_linked>
+            <script>
+                function onDragStart(button, x, y, draginfo)
+                    action(draginfo);
+                    return true;
+                end
+
+                function onDoubleClick(x, y)
+                    action();
+                    return true;
+                end
+
+                function action(draginfo)
+                    local nodeChar = getDatabaseNode().getChild("..")
+                    local rActor = ActorManager.getActor("pc", nodeChar);
+                    local dice = getDice();
+
+                    ActionRage.performRoll(draginfo, rActor, dice[#dice]);
+                    dice[#dice] = nil;
+                    setDice(dice);
+                end
+
+                function onDrop(x, y, draginfo)
+                    if draginfo.isType("dice") then
+                        Debug.chat(draginfo);
+                    end
+                end
+            </script>
+        </simpledice>
     </template>
 
     <template name="string_surgelabel">
@@ -94,13 +120,11 @@
             <frame name="fielddark" offset="7,5,7,5" />
             <script>
                 function onDragStart(button, x, y, draginfo)
-                    Debug.chat('onDragStart')
                     action(draginfo);
                     return true;
                 end
 
                 function onDoubleClick(x, y)
-                    Debug.chat('onDoubleClick')
                     action();
                     return true;
                 end
@@ -114,7 +138,7 @@
                 end
 
                 function onDrop(x, y, draginfo)
-                    if draginfo.isType("rage") then
+                    if draginfo.isType("dice") then
                         Debug.chat(draginfo);
                     end
                 end
