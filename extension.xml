@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root version="3.3" release="1.0">
+	<announcement text="Booting up Altered State" font="emotefont" />
+	<properties>
+		<name>Altered State</name>
+		<version>0.1</version>
+		<author>George Taray</author>
+		<description>Supports Runehammer's Altered State setting for ICRPG.</description>
+		<ruleset>
+			<name>ICRPG</name>
+		</ruleset>
+	</properties>
+	<base>
+		<!-- Campaign -->		
+		<includefile source="campaign/record_char_main.xml" />
+		<includefile source="campaign/template_char.xml" />
+
+		<!-- Strings -->
+		<includefile source="strings/strings.xml" />
+
+		<!-- Scripts -->
+		<script name="ActionRage" file="scripts/manager_action_rage.lua" />
+	</base>
+</root>

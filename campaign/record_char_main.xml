@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <windowclass name="charsheet_main" merge="join">
+        <sheetdata>
+            <!-- EFFORT LABELS -->
+            <!-- Not changing the underlying structure of the saved data (from effort.weapon.total to effort.augmented.total) -->
+            <!-- The goal is to preserve character data as much as possible -->
+            <string_chareffortlabel name="weapon_label">
+				<static textres="AUGMENTED" />
+			</string_chareffortlabel>
+            <string_chareffortlabel name="magic_label">
+				<static textres="GUN" />
+			</string_chareffortlabel>
+
+            <number_charefforttotal name="healing" source="effort.healing.total" insertbefore="ultimate">
+				<anchored to="magic" />
+				<target>healing</target>
+                <die>d10</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="healing_label" insertbefore="ultimate">
+				<anchored to="healing" />
+				<static textres="HEALING" />
+			</string_chareffortlabel>
+            <number_chareffortbase name="healing_base" source="effort.healing.base" insertbefore="ultimate">
+				<anchored to="healing" />
+			</number_chareffortbase>
+            <number_chareffortloot name="healing_loot" source="effort.healing.loot" insertbefore="ultimate">
+				<anchored to="healing" />
+			</number_chareffortloot>
+
+            <number_charefforttotal name="ultimate" merge="join">
+				<anchored to="healing" />
+			</number_charefforttotal>
+
+            <!-- DYING TIMER -->
+            <!-- Deleting for now, until I can move them-->
+            <label_fieldtop name="dyingtimer_label" merge="delete" />
+			<number_dyingbonus name="dyingbonus" merge="delete" />
+            <number_dyingtimer name="dyingtimer" merge="delete" />
+            <genericcontrol name="dyingicon" merge="delete" />
+            <label_fieldtop name="dyingbonus_label" merge="delete" />
+
+            <!-- SURGE and RAGE -->
+            <number_surge name="surge" source="surge" insertbefore="skillframe">
+                <anchored to="ultimate" />
+            </number_surge>
+            <string_surgelabel name="surge_label" insertbefore="skillframe">
+                <anchored to="surge" />
+                <static textres="SURGE" />
+            </string_surgelabel>
+
+            <string_ragelabel name="rage_label">
+                <anchored to="surge" />
+                <static textres="RAGE" />
+            </string_ragelabel>
+            <number_rage name="rage" source="rage">
+                <anchored to="rage_label" />
+            </number_rage>
+        </sheetdata>
+    </windowclass>
+</root>

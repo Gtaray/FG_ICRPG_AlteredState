@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <template name="string_chareffortlabel">
+		<label>
+            <font>charstatlabel</font>
+			<anchored position="righthigh" width="90" height="24">
+                <left>
+                    <parent>effortframe</parent>
+                    <anchor>left</anchor>
+                    <offset>15</offset>
+                </left>
+            </anchored>
+			<static />
+		</label>
+	</template>
+
+    <template name="number_charefforttotal">
+        <number_linked>
+            <anchored position="belowright" offset="0,10" width="30" height="22" />
+            <frame name="fielddark" offset="7,5,7,5" />
+            <readonly />
+            <rollable />
+			<script>
+				function onInit()
+                    addSource("effort." .. target[1] .. ".base");
+                    addSource("effort." .. target[1] .. ".loot");
+                    
+					super.onInit();
+				end
+
+                function onSourceUpdate(node)
+					local nodeWin = window.getDatabaseNode();
+					local nBase = DB.getValue(nodeWin, "effort." .. target[1] .. ".base", 0);
+                    local nLoot = DB.getValue(nodeWin, "effort." .. target[1] .. ".loot", 0);
+
+                    setValue(nBase + nLoot);
+				end
+
+                function action(draginfo)
+					local rActor = ActorManager.getActor("pc", window.getDatabaseNode());
+					ActionEffort.performRoll(draginfo, rActor, self.target[1], self.die[1]);
+					return true;
+				end
+				
+				function onDragStart(button, x, y, draginfo)
+					return action(draginfo);
+				end
+					
+				function onDoubleClick(x,y)
+					return action();
+				end
+			</script>
+        </number_linked>
+    </template>
+
+    <template name="number_surge">
+        <number_linked>
+            <anchored position="belowright" offset="50,10" width="30" height="22" />
+            <frame name="fielddark" offset="7,5,7,5" />
+            <rollable />
+        </number_linked>
+    </template>
+
+    <template name="string_surgelabel">
+		<label>
+            <font>charstatlabel</font>
+			<anchored position="righthigh" width="80" height="24">
+                <left>
+                    <parent>effortframe</parent>
+                    <anchor>left</anchor>
+                    <offset>15</offset>
+                </left>
+            </anchored>
+			<static />
+		</label>
+	</template>
+
+    <template name="string_ragelabel">
+		<label>
+            <font>charstatlabel</font>
+			<anchored position="righthigh" offset="30,0" height="24" />
+			<static />
+		</label>
+	</template>
+    <template name="number_rage">
+        <simpledice>
+            <anchored position="righthigh" offset="15,0" width="50" height="22" />
+            <frame name="fielddark" offset="7,5,7,5" />
+            <script>
+                function onDragStart(button, x, y, draginfo)
+                    Debug.chat('onDragStart')
+                    action(draginfo);
+                    return true;
+                end
+
+                function onDoubleClick(x, y)
+                    Debug.chat('onDoubleClick')
+                    action();
+                    return true;
+                end
+
+                function action(draginfo)
+                    local nodeChar = getDatabaseNode().getChild("..")
+                    local rActor = ActorManager.getActor("pc", nodeChar);
+
+                    ActionRage.performRoll(draginfo, rActor, getDice());
+                    reset();
+                end
+
+                function onDrop(x, y, draginfo)
+                    if draginfo.isType("rage") then
+                        Debug.chat(draginfo);
+                    end
+                end
+            </script>
+        </simpledice>
+    </template>
+</root>
