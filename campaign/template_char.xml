@@ -79,9 +79,11 @@
                     local rActor = ActorManager.getActor("pc", nodeChar);
                     local dice = getDice();
 
-                    ActionRage.performRoll(draginfo, rActor, dice[#dice]);
-                    dice[#dice] = nil;
-                    setDice(dice);
+                    if dice and #dice > 0 then
+                        ActionRage.performRoll(draginfo, rActor, dice[#dice]);
+                        dice[#dice] = nil;
+                        setDice(dice);
+                    end
                 end
 
                 function onDrop(x, y, draginfo)
@@ -132,9 +134,12 @@
                 function action(draginfo)
                     local nodeChar = getDatabaseNode().getChild("..")
                     local rActor = ActorManager.getActor("pc", nodeChar);
-
-                    ActionRage.performRoll(draginfo, rActor, getDice());
-                    reset();
+                    local aDice = getDice();
+                    
+                    if aDice and #aDice > 0 then
+                        ActionRage.performRoll(draginfo, rActor, );
+                        reset();
+                    end
                 end
 
                 function onDrop(x, y, draginfo)
