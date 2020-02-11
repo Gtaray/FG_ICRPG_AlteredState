@@ -60,9 +60,13 @@
     </template>
 
     <template name="number_surge">
-        <simpledice>
-            <anchored position="belowright" offset="50,10" width="30" height="22" />
+        <diefield>
+            <anchored position="belowright" offset="30,10" width="50" height="22" />
             <frame name="fielddark" offset="7,5,7,5" />
+            <droptypes>
+				<type>dice</type>
+                <type>surge</type>
+			</droptypes>
             <script>
                 function onDragStart(button, x, y, draginfo)
                     action(draginfo);
@@ -80,25 +84,19 @@
                     local dice = getDice();
 
                     if dice and #dice > 0 then
-                        ActionRage.performRoll(draginfo, rActor, dice[#dice]);
+                        ActionSurge.performRoll(draginfo, rActor, dice[#dice]);
                         dice[#dice] = nil;
                         setDice(dice);
                     end
                 end
-
-                function onDrop(x, y, draginfo)
-                    if draginfo.isType("dice") then
-                        Debug.chat(draginfo);
-                    end
-                end
             </script>
-        </simpledice>
+        </diefield>
     </template>
 
     <template name="string_surgelabel">
 		<label>
             <font>charstatlabel</font>
-			<anchored position="righthigh" width="80" height="24">
+			<anchored position="righthigh" width="45" height="24">
                 <left>
                     <parent>effortframe</parent>
                     <anchor>left</anchor>
@@ -112,14 +110,18 @@
     <template name="string_ragelabel">
 		<label>
             <font>charstatlabel</font>
-			<anchored position="righthigh" offset="30,0" height="24" />
+			<anchored position="righthigh" offset="10,0" height="24" />
 			<static />
 		</label>
 	</template>
     <template name="number_rage">
-        <simpledice>
+        <diefield>
             <anchored position="righthigh" offset="15,0" width="50" height="22" />
             <frame name="fielddark" offset="7,5,7,5" />
+            <droptypes>
+				<type>dice</type>
+                <type>rage</type>
+			</droptypes>
             <script>
                 function onDragStart(button, x, y, draginfo)
                     action(draginfo);
@@ -137,17 +139,11 @@
                     local aDice = getDice();
                     
                     if aDice and #aDice > 0 then
-                        ActionRage.performRoll(draginfo, rActor, );
+                        ActionRage.performRoll(draginfo, rActor, aDice);
                         reset();
                     end
                 end
-
-                function onDrop(x, y, draginfo)
-                    if draginfo.isType("dice") then
-                        Debug.chat(draginfo);
-                    end
-                end
             </script>
-        </simpledice>
+        </diefield>
     </template>
 </root>

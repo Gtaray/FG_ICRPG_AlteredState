@@ -66,6 +66,8 @@ function onRage(rSource, rTarget, rRoll)
     local nTotal = ActionsManager.total(rRoll);
     rMessage.icon = "action_rage";
 
+    Comm.deliverChatMessage(rMessage);
+
     ActionEffort.notifyApplyDamage(rSource, rTarget, rRoll.bTower, rMessage.text, nTotal)
 end
 

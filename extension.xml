@@ -23,6 +23,6 @@
 
 		<!-- Scripts -->
 		<script name="ActionRage" file="scripts/manager_action_rage.lua" />
-		<script name="ActionRage" file="scripts/manager_action_surge.lua" />
+		<script name="ActionSurge" file="scripts/manager_action_surge.lua" />
 	</base>
 </root>
