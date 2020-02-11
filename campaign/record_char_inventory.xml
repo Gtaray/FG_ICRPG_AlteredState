@@ -7,5 +7,116 @@
 
 <root>
 	<windowclass name="charsheet_inventory" merge="join">
-    </windowclass>
+		<sheetdata>
+			<frame_char name="encumbranceframe" merge="replace">
+				<bounds>15,-205,150,200</bounds>
+			</frame_char>
+
+			<simplenumber name="carriedcount">
+				<anchored to="encumbranceframe" position="insidetopright" offset="20,30" width="25" height="24" merge="replace" />
+			</simplenumber>
+			 <simplenumber name="equippedcount">
+				<anchored to="carriedcount" position="insidetopleft" offset="0,30" width="25" height="24" merge="replace" />
+			</simplenumber>
+
+			<number_dropadd name="coinamount1">
+				<anchored to="encumbranceframe" position="insidebottomright" offset="20,30" width="40" height="20" merge="replace" />
+			</number_dropadd>
+			<label name="credits_label" insertbefore="coinframe">
+				<anchored to="encumbranceframe" position="insidebottomleft" offset="15,30" height="20" />
+				<static textres="char_label_currency" />
+			</label>
+
+			<!-- Remove all other currency bits -->
+			<stringu name="coinname1" merge="delete" />
+			<number_dropadd name="coinamount2" merge="delete" />
+			<stringu name="coinname2" merge="delete" />
+			<number_dropadd name="coinamount3" merge="delete" />
+			<stringu name="coinname3" merge="delete" />
+			<number_dropadd name="coinamount4" merge="delete" />
+			<stringu name="coinname4" merge="delete" />
+			<number_dropadd name="coinamount5" merge="delete" />
+			<stringu name="coinname5" merge="delete" />
+			<number_dropadd name="coinamount6" merge="delete" />
+			<stringu name="coinname6" merge="delete" />
+			<basicstring name="coinother" merge="delete" />
+
+			<frame_char name="coinframe"  merge="replace">
+				<bounds>165,-205,-29,200</bounds>
+			</frame_char>
+
+			<list_cyberneticslist name="cybernetics">
+				<anchored to="coinframe">
+					<top offset="40" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+			</list_cyberneticslist>
+			<scrollbar>
+				<anchored to="cybernetics" />
+				<target>cybernetics</target>
+			</scrollbar>
+			<button_iedit name="cybernetics_iedit">
+				<anchored to="cybernetics" position="aboveright" offset="5,10" />
+				<target>cybernetics</target>
+			</button_iedit>
+			<button_iadd name="cybernetics_iadd">
+				<anchored to="cybernetics_iedit" position="lefthigh" offset="5,0" />
+				<target>cybernetics</target>
+			</button_iadd>
+		</sheetdata>
+  	</windowclass>
+
+  <windowclass name="char_invcybernetic">
+    <margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				getDatabaseNode().onDelete = onDelete;
+			end
+			function onDelete(node)
+				ItemManager.onCharRemoveEvent(node);
+			end
+		</script>
+		<sheetdata>
+			<hidden_record_isidentified name="isidentified"><class>item</class><ignorehost /></hidden_record_isidentified>
+
+			<genericcontrol name="rightanchor">
+				<anchored width="0" height="0">
+					<top />
+					<right />
+				</anchored>
+				<invisible />
+			</genericcontrol>
+			<button_idelete name="idelete">
+				<anchored width="20" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-5" />
+				</anchored>
+			</button_idelete>
+			<linkcontrol_id name="shortcut">
+				<anchored width="20" height="20">
+					<top offset="2" />
+					<right parent="rightanchor" anchor="left" relation="relative" offset="-2" />
+				</anchored>
+				<class>item</class>
+				<readonly />
+			</linkcontrol_id>
+
+			<string_charinvname name="name">
+				<anchored position="insidetopleft" offset="5,2" height="20">
+					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+				</anchored>
+				<tabtarget next="nonid_name" />
+			</string_charinvname>
+			<string_charinvname name="nonid_name">
+				<anchored position="insidetopleft" offset="5,2" height="20">
+					<right parent="rightanchor" anchor="left" relation="current" offset="-5" />
+				</anchored>
+				<empty textres="library_recordtype_empty_nonid_item" />
+				<invisible />
+				<tabtarget prev="name" />
+			</string_charinvname>
+		</sheetdata>
+  </windowclass>
 </root>

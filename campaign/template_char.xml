@@ -146,4 +146,15 @@
             </script>
         </diefield>
     </template>
+
+    <template name="list_cyberneticslist">
+		<windowlist>
+			<child></child>
+			<child><backcolor>1A40301E</backcolor></child>
+			<datasource>.cybernetics</datasource>
+			<class>char_invcybernetic</class>
+			<allowdelete />
+			<script file="campaign/scripts/char_cyberneticslist.lua" />
+		</windowlist>
+	</template>
 </root>
