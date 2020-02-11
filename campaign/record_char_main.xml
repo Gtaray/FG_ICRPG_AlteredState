@@ -8,6 +8,59 @@
 <root>
     <windowclass name="charsheet_main" merge="join">
         <sheetdata>
+            <!-- HP/HEARTS, ARMOR, DYING, etc -->
+            <genericcontrol name="hearticon" merge="delete" /> <!-- Saving room by removing the graphic... -->
+            <basicnumber name="hearts">
+                <anchored to="defenseframe" position="insidetopleft" offset="46,22" width="40" height="24" merge="replace" />
+            </basicnumber>
+            <basicnumber name="hp">
+                <anchored to="hearts" position="belowleft" offset="-26,16" width="40"  height="24" merge="replace" />
+            </basicnumber>
+            <basicnumber name="wounds">
+                <anchored to="hp" position="right" offset="12,0" width="40" merge="replace" />
+            </basicnumber>
+
+            <genericcontrol name="armoricon">
+                <anchored to="hearts" position="righthigh" offset="40,-12" width="64" height="79" merge="replace"/>  
+            </genericcontrol>
+
+            <!-- DYING TIMER -->
+            <genericcontrol name="dyingicon">
+                <anchored to="armor_base" position="righthigh" offset="20,0" width="54" height="62" merge="replace"/>
+            </genericcontrol>
+            <number_dyingbonus name="dyingbonus">
+				<anchored to="dyingtimer" width="30" height="24" merge="replace">
+                    <top>
+						<parent>dyingicon</parent>
+						<anchor>top</anchor>
+						<offset>0</offset>
+					</top>
+					<left>
+						<parent>dyingicon</parent>
+						<anchor>right</anchor>
+						<offset>10</offset>
+					</left>
+                </anchored>
+			</number_dyingbonus>
+			<number_dyingtimer name="dyingtimer">
+				<anchored to="dyingicon" width="30" height="24" merge="replace">
+                    <bottom>
+						<parent>dyingicon</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>
+					</bottom>
+					<left>
+						<parent>dyingicon</parent>
+						<anchor>right</anchor>
+						<offset>10</offset>
+					</left>
+                </anchored>
+			</number_dyingtimer>
+            
+            <button_herocoin name="button_herocoin">
+				<anchored to="armoricon" position="right" offset="172,0" width="105" merge="replace" />
+			</button_herocoin>
+
             <!-- EFFORT LABELS -->
             <!-- Not changing the underlying structure of the saved data (from effort.weapon.total to effort.augmented.total) -->
             <!-- The goal is to preserve character data as much as possible -->
@@ -38,17 +91,9 @@
 				<anchored to="healing" />
 			</number_charefforttotal>
 
-            <!-- DYING TIMER -->
-            <!-- Deleting for now, until I can move them-->
-            <label_fieldtop name="dyingtimer_label" merge="delete" />
-			<number_dyingbonus name="dyingbonus" merge="delete" />
-            <number_dyingtimer name="dyingtimer" merge="delete" />
-            <genericcontrol name="dyingicon" merge="delete" />
-            <label_fieldtop name="dyingbonus_label" merge="delete" />
-
             <!-- SURGE and RAGE -->
             <number_surge name="surge" source="surge" insertbefore="skillframe">
-                <anchored to="ultimate" />
+                <anchored to="ultimate"/>
             </number_surge>
             <string_surgelabel name="surge_label" insertbefore="skillframe">
                 <anchored to="surge" />
