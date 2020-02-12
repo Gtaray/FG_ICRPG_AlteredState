@@ -26,7 +26,7 @@ function onMenuSelection(selection)
 end
 
 function update()
-	local bEditMode = (window.inventorylist_iedit.getValue() == 1);
+	local bEditMode = (window.cybernetics_iedit.getValue() == 1);
 	window.idelete_header.setVisible(bEditMode);
 	for _,w in ipairs(getWindows()) do
 		w.idelete.setVisibility(bEditMode);
