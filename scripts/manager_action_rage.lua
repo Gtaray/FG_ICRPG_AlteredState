@@ -1,3 +1,8 @@
+-- 
+-- Please see the license.html file included with this distribution for 
+-- attribution and copyright information.
+--
+
 function onInit()
 	GameSystem.actions["rage"] = { bUseModStack = false };
     ActionsManager.registerResultHandler("rage", onRage);
