@@ -62,14 +62,47 @@
 			</button_herocoin>
 
             <!-- EFFORT LABELS -->
-            <!-- Not changing the underlying structure of the saved data (from effort.weapon.total to effort.augmented.total) -->
-            <!-- The goal is to preserve character data as much as possible -->
-            <string_chareffortlabel name="weapon_label">
+            <number_charefforttotal name="weapon" merge="delete" />
+            <string_chareffortlabel name="weapon_label" merge="delete" />
+            <string_chareffortbase name="weapon_base" merge="delete" />
+            <string_chareffortloot name="weapon_loot" merge="delete" />
+
+            <number_charefforttotal name="magic" merge="delete" />
+            <string_chareffortlabel name="magic_label" merge="delete" />
+            <string_chareffortbase name="magic_base" merge="delete" />
+            <string_chareffortloot name="magic_loot" merge="delete" />
+
+            <number_charefforttotal name="augmented" source="effort.augmented.total">
+				<anchored to="basic" />
+				<target>augmented</target>
+                <die>d6</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="augmented_label">
+				<anchored to="augmented" />
 				<static textres="AUGMENTED" />
 			</string_chareffortlabel>
-            <string_chareffortlabel name="magic_label">
+            <number_chareffortbase name="augmented_base" source="effort.augmented.base">
+				<anchored to="augmented" />
+			</number_chareffortbase>
+            <number_chareffortloot name="augmented_loot" source="effort.augmented.loot">
+				<anchored to="augmented" />
+			</number_chareffortloot>
+
+            <number_charefforttotal name="gun" source="effort.gun.total">
+				<anchored to="augmented" />
+				<target>augmented</target>
+                <die>d6</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="gun_label">
+				<anchored to="gun" />
 				<static textres="GUN" />
 			</string_chareffortlabel>
+            <number_chareffortbase name="gun_base" source="effort.gun.base">
+				<anchored to="gun" />
+			</number_chareffortbase>
+            <number_chareffortloot name="gun_loot" source="effort.gun.loot">
+				<anchored to="gun" />
+			</number_chareffortloot>
 
             <number_charefforttotal name="healing" source="effort.healing.total" insertbefore="ultimate">
 				<anchored to="magic" />
