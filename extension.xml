@@ -3,7 +3,7 @@
 	<announcement text="Booting up Altered State" font="emotefont" />
 	<properties>
 		<name>Altered State</name>
-		<version>0.1</version>
+		<version>0.2</version>
 		<author>George Taray</author>
 		<description>Supports Runehammer's Altered State setting for ICRPG.</description>
 		<ruleset>

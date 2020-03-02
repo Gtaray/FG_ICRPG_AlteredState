@@ -147,14 +147,13 @@
         </diefield>
     </template>
 
-    <template name="list_cyberneticslist">
-		<windowlist>
-			<child></child>
-			<child><backcolor>1A40301E</backcolor></child>
-			<datasource>.cybernetics</datasource>
-			<class>char_invcybernetic</class>
-			<allowdelete />
-			<script file="campaign/scripts/char_cyberneticslist.lua" />
-		</windowlist>
+    <template name="button_char_inv_carried" merge="replace">
+		<buttonfield>
+			<state icon="button_char_inv_none" tooltipres="char_tooltip_inv_none" />
+			<state icon="button_char_inv_carried" tooltipres="char_tooltip_inv_carried" />
+			<state icon="button_char_inv_equipped" tooltipres="char_tooltip_inv_equipped" />
+            <state icon="button_char_inv_enhancement" tooltipres="char_tooltip_inv_enhancement" />
+			<default>1</default>
+		</buttonfield>
 	</template>
 </root>
