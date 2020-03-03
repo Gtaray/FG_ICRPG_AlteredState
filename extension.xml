@@ -23,6 +23,7 @@
 		<includefile source="strings/strings.xml" />
 
 		<!-- Scripts -->
+		<script name="AlteredState" file="scripts/alteredstate.lua" />
 		<script name="ActionRage" file="scripts/manager_action_rage.lua" />
 		<script name="ActionSurge" file="scripts/manager_action_surge.lua" />
 	</base>

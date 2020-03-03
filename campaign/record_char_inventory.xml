@@ -6,13 +6,5 @@
 -->
 
 <root>
-	<windowclass name="charsheet_inventory" merge="join">
-		<sheetdata>
-		</sheetdata>
-  	</windowclass>
 
-	<windowclass name="char_invitem" merge="join">
-		<sheetdata>
-		</sheetdata>
-	</windowclass>
 </root>
