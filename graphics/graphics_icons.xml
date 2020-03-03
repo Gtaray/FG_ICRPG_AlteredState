@@ -6,6 +6,7 @@
 -->
 
 <root>
+    <icon name="button_char_inv_enhancement" file="graphics/buttons/button_inv_enhancement.png" />
     <icon name="action_rage" file="graphics/icons/action_rage.png" />
 	  <icon name="action_surge" file="graphics/icons/action_surge.png" />
 </root>

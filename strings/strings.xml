@@ -11,4 +11,8 @@
     <string name="HEALING">HEALING</string>
     <string name="SURGE">SURGE</string>
     <string name="RAGE">RAGE</string>
+    <string name="char_label_totalcarried">Carried</string>
+    <string name="char_label_totalequipped">Equipped</string>
+    <string name="char_label_currency">Credits</string>
+    <string name="char_label_money">Cybernetics</string>
 </root>

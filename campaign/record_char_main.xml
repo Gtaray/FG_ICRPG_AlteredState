@@ -72,40 +72,40 @@
             <string_chareffortbase name="magic_base" merge="delete" />
             <string_chareffortloot name="magic_loot" merge="delete" />
 
-            <number_charefforttotal name="augmented" source="effort.augmented.total">
+            <number_charefforttotal name="augmented" source="effort.augmented.total" insertbefore="ultimate">
 				<anchored to="basic" />
 				<target>augmented</target>
                 <die>d6</die>
 			</number_charefforttotal>
-            <string_chareffortlabel name="augmented_label">
+            <string_chareffortlabel name="augmented_label" insertbefore="ultimate">
 				<anchored to="augmented" />
 				<static textres="AUGMENTED" />
 			</string_chareffortlabel>
-            <number_chareffortbase name="augmented_base" source="effort.augmented.base">
+            <number_chareffortbase name="augmented_base" source="effort.augmented.base" insertbefore="ultimate">
 				<anchored to="augmented" />
 			</number_chareffortbase>
-            <number_chareffortloot name="augmented_loot" source="effort.augmented.loot">
+            <number_chareffortloot name="augmented_loot" source="effort.augmented.loot" insertbefore="ultimate">
 				<anchored to="augmented" />
 			</number_chareffortloot>
 
-            <number_charefforttotal name="gun" source="effort.gun.total">
+            <number_charefforttotal name="gun" source="effort.gun.total" insertbefore="ultimate">
 				<anchored to="augmented" />
-				<target>augmented</target>
-                <die>d6</die>
+				<target>gun</target>
+                <die>d8</die>
 			</number_charefforttotal>
-            <string_chareffortlabel name="gun_label">
+            <string_chareffortlabel name="gun_label" insertbefore="ultimate">
 				<anchored to="gun" />
 				<static textres="GUN" />
 			</string_chareffortlabel>
-            <number_chareffortbase name="gun_base" source="effort.gun.base">
+            <number_chareffortbase name="gun_base" source="effort.gun.base" insertbefore="ultimate">
 				<anchored to="gun" />
 			</number_chareffortbase>
-            <number_chareffortloot name="gun_loot" source="effort.gun.loot">
+            <number_chareffortloot name="gun_loot" source="effort.gun.loot" insertbefore="ultimate">
 				<anchored to="gun" />
 			</number_chareffortloot>
 
             <number_charefforttotal name="healing" source="effort.healing.total" insertbefore="ultimate">
-				<anchored to="magic" />
+				<anchored to="gun" />
 				<target>healing</target>
                 <die>d10</die>
 			</number_charefforttotal>

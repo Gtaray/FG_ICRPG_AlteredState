@@ -6,6 +6,5 @@
 -->
 
 <root>
-	<windowclass name="charsheet_inventory" merge="join">
-    </windowclass>
+
 </root>
