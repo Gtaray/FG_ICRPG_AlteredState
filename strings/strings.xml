@@ -20,6 +20,8 @@
     <string name="char_label_currency">Credits</string>
     <string name="char_label_money">Cybernetics</string>
 
+    <string name="char_label_appearance">LINK &amp; BOND</string>
+
     <string name="char_message_typeadd">Type '%s' added to '%s'.</string>
     <string name="char_message_skinadd">Skin '%s' added to '%s'.</string>
     <string name="char_message_consciousnessadd">Consciousness '%s' added to '%s'.</string>
