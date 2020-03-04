@@ -11,8 +11,16 @@
     <string name="HEALING">HEALING</string>
     <string name="SURGE">SURGE</string>
     <string name="RAGE">RAGE</string>
+
+    <string name="char_label_archetype">Type</string>
+    <string name="char_label_skin">Skin</string>
+    <string name="char_label_consciousness">Consciousness</string>
     <string name="char_label_totalcarried">Carried</string>
     <string name="char_label_totalequipped">Equipped</string>
     <string name="char_label_currency">Credits</string>
     <string name="char_label_money">Cybernetics</string>
+
+    <string name="char_message_typeadd">Type '%s' added to '%s'.</string>
+    <string name="char_message_skinadd">Skin '%s' added to '%s'.</string>
+    <string name="char_message_consciousnessadd">Consciousness '%s' added to '%s'.</string>
 </root>

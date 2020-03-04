@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+	Please see the license.html file included with this distribution for 
+	attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet" merge="join">
+        <script>
+			function onInit()
+				if User.isLocal() then
+					speak.setVisible(false);
+					portrait.setVisible(false);
+					localportrait.setVisible(true);
+				end
+			end
+
+			function onDrop(x, y, draginfo)
+				if draginfo.isType("deathtimer") then
+					ActionDeathTimer.setDyingTimer(getDatabaseNode(), draginfo.getNumberData())
+				end
+			end
+		</script>
+        <sheetdata>
+            <string_labeled name="name">
+                <anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20" width="160" merge="replace" />
+            </string_labeled>
+            <string_labeled name="type" insertbefore="main">
+                <anchored to="overviewframe" position="insidetopleft" offset="180,10" height="20">
+                    <right offset="-35" />
+                </anchored>
+                <script>
+                    function onDrop(x, y, draginfo)
+                        if draginfo.isType("shortcut") then
+                            local sClass, sRecord = draginfo.getShortcutData();
+                            if sClass == "reference_archetype" then
+                                CharManager2.addCharTypeRef(window.getDatabaseNode(), sClass, sRecord);
+                            end
+                        end
+                    end
+                </script>
+                <labelres>char_label_archetype</labelres>
+            </string_labeled>
+            <linkfield name="typelink" insertbefore="main">
+                <anchored to="type" position="right" offset="2,10" width="20" />
+                <description field="type" />
+                <closetoggle />
+                <script>
+                    function onInit()
+                        onValueChanged();
+                    end
+                    function onValueChanged()
+                        if isEmpty() then
+                            setVisible(false);
+                        else
+                            setVisible(true);
+                        end
+                    end
+                </script>
+            </linkfield>
+
+            <string_labeled name="bioform" merge="delete" />
+            <linkfield name="bioformlink" merge="delete" />
+            <string_labeled name="consciousness" insertbefore="main">
+                <anchored to="overviewframe" position="insidetopleft" offset="15,33" height="20" width="140" />
+                <script>
+                    function onDrop(x, y, draginfo)
+                        if draginfo.isType("shortcut") then
+                            local sClass, sRecord = draginfo.getShortcutData();
+                            if sClass == "reference_bioform" then
+                                CharManager2.addCharConsciousnessRef(window.getDatabaseNode(), sClass, sRecord);
+                            end
+                        end
+                    end
+                </script>
+                <labelres>char_label_consciousness</labelres>
+            </string_labeled>
+            <linkfield name="consciousnesslink" insertbefore="main">
+                <anchored to="consciousness" position="right" offset="2,7" width="20" />
+                <description field="consciousness" />
+                <closetoggle />
+                <script>
+                    function onInit()
+                        onValueChanged();
+                    end
+                    function onValueChanged()
+                        if isEmpty() then
+                            setVisible(false);
+                        else
+                            setVisible(true);
+                        end
+                    end
+                </script>
+            </linkfield>
+
+            <string_labeled name="archetype" merge="delete" />
+            <linkfield name="archetypelink" merge="delete" />
+            <string_labeled name="skin" insertbefore="main">
+                <anchored to="overviewframe" position="insidetopleft" offset="0,33" height="20">
+                    <left parent="consciousnesslink" anchor="right" offset="5" />
+                    <right offset="-35" />
+                </anchored>
+                <script>
+                    function onDrop(x, y, draginfo)
+                        if draginfo.isType("shortcut") then
+                            local sClass, sRecord = draginfo.getShortcutData();
+                            if sClass == "reference_bioform" then
+                                CharManager2.addCharSkinRef(window.getDatabaseNode(), sClass, sRecord);
+                            end
+                        end
+                    end
+                </script>
+                <labelres>char_label_skin</labelres>
+            </string_labeled>
+            <linkfield name="skinlink" insertbefore="main">
+                <anchored to="skin" position="right" offset="2,7" width="20" />
+                <description field="skin" />
+                <closetoggle />
+                <script>
+                    function onInit()
+                        onValueChanged();
+                    end
+                    function onValueChanged()
+                        if isEmpty() then
+                            setVisible(false);
+                        else
+                            setVisible(true);
+                        end
+                    end
+                </script>
+            </linkfield>
+        </sheetdata>
+    </windowclass>
+</root>

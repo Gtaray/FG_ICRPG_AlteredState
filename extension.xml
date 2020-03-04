@@ -12,9 +12,11 @@
 	</properties>
 	<base>
 		<!-- Campaign -->		
+		<includefile source="campaign/record_char.xml" />
 		<includefile source="campaign/record_char_main.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />
 		<includefile source="campaign/template_char.xml" />
+		<script name="CharManager2" file="campaign/scripts/manager_char2.lua" />
 
 		<!-- Graphics -->
 		<includefile source="graphics/graphics_icons.xml" />
