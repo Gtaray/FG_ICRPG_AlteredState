@@ -8,18 +8,104 @@
 <root>
     <windowclass name="charsheet_main" merge="join">
         <sheetdata>
+            <!-- HP/HEARTS, ARMOR, DYING, etc -->
+            <genericcontrol name="hearticon" merge="delete" /> <!-- Saving room by removing the graphic... -->
+            <basicnumber name="hearts">
+                <anchored to="defenseframe" position="insidetopleft" offset="46,22" width="40" height="24" merge="replace" />
+            </basicnumber>
+            <basicnumber name="hp">
+                <anchored to="hearts" position="belowleft" offset="-26,16" width="40"  height="24" merge="replace" />
+            </basicnumber>
+            <basicnumber name="wounds">
+                <anchored to="hp" position="right" offset="12,0" width="40" merge="replace" />
+            </basicnumber>
+
+            <genericcontrol name="armoricon">
+                <anchored to="hearts" position="righthigh" offset="40,-12" width="64" height="79" merge="replace"/>  
+            </genericcontrol>
+
+            <!-- DYING TIMER -->
+            <genericcontrol name="dyingicon">
+                <anchored to="armor_base" position="righthigh" offset="20,0" width="54" height="62" merge="replace"/>
+            </genericcontrol>
+            <number_dyingbonus name="dyingbonus">
+				<anchored to="dyingtimer" width="30" height="24" merge="replace">
+                    <top>
+						<parent>dyingicon</parent>
+						<anchor>top</anchor>
+						<offset>0</offset>
+					</top>
+					<left>
+						<parent>dyingicon</parent>
+						<anchor>right</anchor>
+						<offset>10</offset>
+					</left>
+                </anchored>
+			</number_dyingbonus>
+			<number_dyingtimer name="dyingtimer">
+				<anchored to="dyingicon" width="30" height="24" merge="replace">
+                    <bottom>
+						<parent>dyingicon</parent>
+						<anchor>bottom</anchor>
+						<offset>3</offset>
+					</bottom>
+					<left>
+						<parent>dyingicon</parent>
+						<anchor>right</anchor>
+						<offset>10</offset>
+					</left>
+                </anchored>
+			</number_dyingtimer>
+            
+            <button_herocoin name="button_herocoin">
+				<anchored to="armoricon" position="right" offset="172,0" width="105" merge="replace" />
+			</button_herocoin>
+
             <!-- EFFORT LABELS -->
-            <!-- Not changing the underlying structure of the saved data (from effort.weapon.total to effort.augmented.total) -->
-            <!-- The goal is to preserve character data as much as possible -->
-            <string_chareffortlabel name="weapon_label">
+            <number_charefforttotal name="weapon" merge="delete" />
+            <string_chareffortlabel name="weapon_label" merge="delete" />
+            <string_chareffortbase name="weapon_base" merge="delete" />
+            <string_chareffortloot name="weapon_loot" merge="delete" />
+
+            <number_charefforttotal name="magic" merge="delete" />
+            <string_chareffortlabel name="magic_label" merge="delete" />
+            <string_chareffortbase name="magic_base" merge="delete" />
+            <string_chareffortloot name="magic_loot" merge="delete" />
+
+            <number_charefforttotal name="augmented" source="effort.augmented.total" insertbefore="ultimate">
+				<anchored to="basic" />
+				<target>augmented</target>
+                <die>d6</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="augmented_label" insertbefore="ultimate">
+				<anchored to="augmented" />
 				<static textres="AUGMENTED" />
 			</string_chareffortlabel>
-            <string_chareffortlabel name="magic_label">
+            <number_chareffortbase name="augmented_base" source="effort.augmented.base" insertbefore="ultimate">
+				<anchored to="augmented" />
+			</number_chareffortbase>
+            <number_chareffortloot name="augmented_loot" source="effort.augmented.loot" insertbefore="ultimate">
+				<anchored to="augmented" />
+			</number_chareffortloot>
+
+            <number_charefforttotal name="gun" source="effort.gun.total" insertbefore="ultimate">
+				<anchored to="augmented" />
+				<target>gun</target>
+                <die>d8</die>
+			</number_charefforttotal>
+            <string_chareffortlabel name="gun_label" insertbefore="ultimate">
+				<anchored to="gun" />
 				<static textres="GUN" />
 			</string_chareffortlabel>
+            <number_chareffortbase name="gun_base" source="effort.gun.base" insertbefore="ultimate">
+				<anchored to="gun" />
+			</number_chareffortbase>
+            <number_chareffortloot name="gun_loot" source="effort.gun.loot" insertbefore="ultimate">
+				<anchored to="gun" />
+			</number_chareffortloot>
 
             <number_charefforttotal name="healing" source="effort.healing.total" insertbefore="ultimate">
-				<anchored to="magic" />
+				<anchored to="gun" />
 				<target>healing</target>
                 <die>d10</die>
 			</number_charefforttotal>
@@ -38,17 +124,9 @@
 				<anchored to="healing" />
 			</number_charefforttotal>
 
-            <!-- DYING TIMER -->
-            <!-- Deleting for now, until I can move them-->
-            <label_fieldtop name="dyingtimer_label" merge="delete" />
-			<number_dyingbonus name="dyingbonus" merge="delete" />
-            <number_dyingtimer name="dyingtimer" merge="delete" />
-            <genericcontrol name="dyingicon" merge="delete" />
-            <label_fieldtop name="dyingbonus_label" merge="delete" />
-
             <!-- SURGE and RAGE -->
             <number_surge name="surge" source="surge" insertbefore="skillframe">
-                <anchored to="ultimate" />
+                <anchored to="ultimate"/>
             </number_surge>
             <string_surgelabel name="surge_label" insertbefore="skillframe">
                 <anchored to="surge" />

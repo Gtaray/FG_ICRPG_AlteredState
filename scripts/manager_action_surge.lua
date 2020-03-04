@@ -2,38 +2,32 @@
 -- Please see the license.html file included with this distribution for 
 -- attribution and copyright information.
 --
-
 function onInit()
-	GameSystem.actions["rage"] = { bUseModStack = false };
-    ActionsManager.registerResultHandler("rage", onRage);
-    ActionsManager.registerModHandler("rage", modRage);
+	GameSystem.actions["surge"] = { bUseModStack = false };
+    ActionsManager.registerResultHandler("surge", onSurge);
+    ActionsManager.registerModHandler("surge", modSurge);
 end
 
-function performRoll(draginfo, rActor, rageDice)
+function performRoll(draginfo, rActor, surgeDie)
     local rRoll = {};
-	rRoll.sType = "rage";	
-	rRoll.sDesc = "[RAGE]";
-	rRoll.aDice = {};
+	rRoll.sType = "surge";	
+	rRoll.sDesc = "[SURGE]";
+	rRoll.aDice = { surgeDie };
     rRoll.nMod = 0;
-    
-    -- get all dice from the rage dice
-    for _,die in pairs(rageDice) do
-        table.insert(rRoll.aDice, die)
-    end
 
     if #rRoll.aDice > 0 then
         ActionsManager.performAction(draginfo, rActor, rRoll);
     end
 end
 
-function modRage(rSource, rTarget, rRoll)
+function modSurge(rSource, rTarget, rRoll)
     local aAddDesc = {};
     local bHeal = ModifierStack.getModifierKey("HEAL");
     if bHeal and not string.match(rRoll.sDesc, "%[HEAL%]") then
 		table.insert(aAddDesc, "[HEAL]");
     end
     
-    local aStatFilter = { "RAGE" };
+    local aStatFilter = { "SURGE" };
     local nEffectCount;
 	local aAddDice = {};
 	local nAddMod = 0;
@@ -66,13 +60,9 @@ function modRage(rSource, rTarget, rRoll)
 	end
 end
 
-function onRage(rSource, rTarget, rRoll)
+function onSurge(rSource, rTarget, rRoll)
     local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
-    local nTotal = ActionsManager.total(rRoll);
-    rMessage.icon = "action_rage";
+    rMessage.icon = "action_surge";
 
     Comm.deliverChatMessage(rMessage);
-
-    ActionEffort.notifyApplyDamage(rSource, rTarget, rRoll.bTower, rMessage.text, nTotal)
 end
-

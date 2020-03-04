@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+    <icon name="button_char_inv_enhancement" file="graphics/buttons/button_inv_enhancement.png" />
+    <icon name="action_rage" file="graphics/icons/action_rage.png" />
+	  <icon name="action_surge" file="graphics/icons/action_surge.png" />
+</root>
