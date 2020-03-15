@@ -4,7 +4,7 @@
 --
 
 function onInit()
-    DataCommon.addStat("agumented", "AUG", "AUGMENTED", "effort.augmented");
+    DataCommon.addStat("augmented", "AUG", "AUGMENTED", "effort.augmented");
     DataCommon.addStat("gun", "GUN", "GUN", "effort.gun");
     DataCommon.addStat("healing", "HEALING", "HEALING", "effort.healing");
     DataCommon.overwriteEffortType("d6", "augmented");
