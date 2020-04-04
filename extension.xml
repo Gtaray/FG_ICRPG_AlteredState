@@ -18,6 +18,8 @@
 		<includefile source="campaign/template_char.xml" />
 		<script name="CharManager2" file="campaign/scripts/manager_char2.lua" />
 
+		<includefile source="campaign/record_npc.xml" />
+
 		<!-- Graphics -->
 		<includefile source="graphics/graphics_icons.xml" />
 

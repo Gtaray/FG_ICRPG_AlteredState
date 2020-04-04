@@ -8,60 +8,23 @@
 <root>
     <windowclass name="charsheet_main" merge="join">
         <sheetdata>
-            <!-- HP/HEARTS, ARMOR, DYING, etc -->
-            <genericcontrol name="hearticon" merge="delete" /> <!-- Saving room by removing the graphic... -->
-            <basicnumber name="hearts">
-                <anchored to="defenseframe" position="insidetopleft" offset="46,22" width="40" height="24" merge="replace" />
-            </basicnumber>
-            <basicnumber name="hp">
-                <anchored to="hearts" position="belowleft" offset="-26,16" width="40"  height="24" merge="replace" />
-            </basicnumber>
-            <basicnumber name="wounds">
-                <anchored to="hp" position="right" offset="12,0" width="40" merge="replace" />
-            </basicnumber>
-
-            <genericcontrol name="armoricon">
-                <anchored to="hearts" position="righthigh" offset="40,-12" width="64" height="79" merge="replace"/>  
-            </genericcontrol>
-
-            <!-- DYING TIMER -->
-            <genericcontrol name="dyingicon">
-                <anchored to="armor_base" position="righthigh" offset="20,0" width="54" height="62" merge="replace"/>
-            </genericcontrol>
-            <number_dyingbonus name="dyingbonus">
-				<anchored to="dyingtimer" width="30" height="24" merge="replace">
-                    <top>
-						<parent>dyingicon</parent>
-						<anchor>top</anchor>
-						<offset>0</offset>
+            <!-- EFFORT LABELS -->
+            <frame_char name="effortframe">
+				<anchored height="280">
+					<top>
+						<parent>defenseframe</parent>
+						<anchor>bottom</anchor>
 					</top>
 					<left>
-						<parent>dyingicon</parent>
+						<parent>statsframe</parent>
 						<anchor>right</anchor>
-						<offset>10</offset>
 					</left>
-                </anchored>
-			</number_dyingbonus>
-			<number_dyingtimer name="dyingtimer">
-				<anchored to="dyingicon" width="30" height="24" merge="replace">
-                    <bottom>
-						<parent>dyingicon</parent>
-						<anchor>bottom</anchor>
-						<offset>3</offset>
-					</bottom>
-					<left>
-						<parent>dyingicon</parent>
-						<anchor>right</anchor>
-						<offset>10</offset>
-					</left>
-                </anchored>
-			</number_dyingtimer>
-            
-            <button_herocoin name="button_herocoin">
-				<anchored to="armoricon" position="right" offset="172,0" width="105" merge="replace" />
-			</button_herocoin>
+					<right>
+						<offset>-20</offset>
+					</right>
+				</anchored>
+			</frame_char>
 
-            <!-- EFFORT LABELS -->
             <number_charefforttotal name="weapon" merge="delete" />
             <string_chareffortlabel name="weapon_label" merge="delete" />
             <string_chareffortbase name="weapon_base" merge="delete" />
@@ -140,6 +103,11 @@
             <number_rage name="rage" source="rage">
                 <anchored to="rage_label" />
             </number_rage>
+
+            <!-- DYING TIMER -->
+            <dice_dyingtimer name="dyingtimer" source="dying.timerdie">
+				<anchored to="dyingicon" position="righthigh" offset="5,29" width="30" height="24" />
+			</dice_dyingtimer>
         </sheetdata>
     </windowclass>
 </root>

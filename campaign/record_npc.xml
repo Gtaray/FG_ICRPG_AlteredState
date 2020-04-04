@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>	
+	<windowclass name="npc_main" merge="join">
+		<sheetdata>
+			<npc_effort name="weapon" merge="delete" />
+			<label_npc_stat name="weaponlabel" merge="delete" />
+			<npc_effort name="magic" merge="delete" />
+			<label_npc_stat name="magiclabel" merge="delete" />
+
+			<npc_effort name="basic">
+				<anchored merge="replace" width="40" height="30">
+					<top parent="columnanchor" anchor="bottom" relation="relative" offset="25" />
+					<left anchor="center" offset="-153" />
+				</anchored>
+			</npc_effort>
+
+			<npc_effort name="augmented" source="effort.augmented" insertbefore="ultimate">
+				<target>augmented</target>
+				<die>d6</die>
+			</npc_effort>
+			<label_npc_stat>
+				<anchored to="augmented" />
+				<static textres="AUGMENT" />
+			</label_npc_stat>
+
+			<npc_effort name="gun" source="effort.gun" insertbefore="ultimate">
+				<target>gun</target>
+				<die>d8</die>
+			</npc_effort>
+			<label_npc_stat>
+				<anchored to="gun" />
+				<static textres="GUN" />
+			</label_npc_stat>
+
+			<npc_effort name="healing" source="effort.healing" insertbefore="ultimate">
+				<target>healing</target>
+				<die>d10</die>
+			</npc_effort>
+			<label_npc_stat>
+				<anchored to="healing" />
+				<static textres="HEALING" />
+			</label_npc_stat>
+		</sheetdata>
+	</windowclass>
+</root>
