@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="power_page_stats" merge="join">
+		<sheetdata>
+			<frame_char name="statsframe">
+				<bounds>20,5,-20,130</bounds>
+			</frame_char>
+
+			<number_charefforttotal name="basic" merge="join">
+				<anchored to="statsframe" position="insidetopleft" offset="20,60"/>
+                <die>d4</die>
+			</number_charefforttotal>
+
+            <number_charefforttotal name="weapon" merge="join">
+                <anchored to="basic" position="righthigh" offset="26,0" />
+				<target>augmented</target>
+                <die>d6</die>
+			</number_charefforttotal>
+			<label_npc_stat name="weapon_label" merge="join">
+				<static textres="AUG"/>
+			</label_npc_stat>
+
+			<number_charefforttotal name="magic" merge="join">
+                <anchored to="weapon" position="righthigh" offset="26,0" /> 
+				<target>gun</target>
+                <die>d8</die>
+			</number_charefforttotal>
+			<label_npc_stat name="magic_label" merge="join">
+				<static textres="GUN"/>
+			</label_npc_stat>
+
+            <!-- NEW: HEALING -->
+            <number_charefforttotal name="healing" insertbefore="ultimate">
+				<anchored to="magic" position="righthigh" offset="26,0" />
+				<target>healing</target>
+                <die>d10</die>
+			</number_charefforttotal>
+			<label_npc_stat name="healing_label" insertbefore="ultimate">
+				<anchored to="healing" />
+				<static textres="HEAL"/>
+			</label_npc_stat>
+
+			<number_charefforttotal name="ultimate" merge="join">
+				<anchored to="healing" position="righthigh" offset="27,0" />
+			</number_charefforttotal>
+            <label_npc_stat name="ultimate_label" merge="join">
+				<static textres="ULT"/>
+			</label_npc_stat>
+
+            <!-- SURGE and RAGE -->
+            <number_surge name="surge" source="surge">
+                <anchored to="statsframe" position="insidebottomleft" offset="75,15"/>
+            </number_surge>
+            <string_surgelabel name="surge_label" >
+                <anchored to="surge" />
+                <static textres="SURGE" />
+            </string_surgelabel>
+
+            <string_ragelabel name="rage_label">
+                <anchored to="surge" />
+                <static textres="RAGE" />
+            </string_ragelabel>
+            <number_rage name="rage" source="rage">
+                <anchored to="rage_label" />
+            </number_rage>
+		</sheetdata>
+	</windowclass>
+
+	<!-- TEMPLATES -->
+	<template name="cycler_effort_stat">
+		<button_stringcycler>
+			<anchored width="50" height="20" />
+			<parameters>
+				<defaultlabelres>dash</defaultlabelres>
+				<labelsres>BASIC|AUGMENTED|GUN|HEALING|ULTIMATE|STR|DEX|CON|INT|WIS|CHA</labelsres>
+				<values>basic|augmented|gun|healing|ultimate|strength|dexterity|constitution|intelligence|wisdom|charisma</values>
+			</parameters>
+		</button_stringcycler>
+	</template>
+</root>

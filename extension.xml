@@ -2,18 +2,20 @@
 <root version="3.3" release="1.0">
 	<announcement text="Booting up Altered State" font="emotefont" />
 	<properties>
-		<name>Altered State</name>
-		<version>0.2</version>
+		<name>ICRPG - Altered State</name>
+		<version>1.1</version>
 		<author>George Taray</author>
 		<description>Supports Runehammer's Altered State setting for ICRPG.</description>
 		<ruleset>
 			<name>ICRPG</name>
 		</ruleset>
+		<loadorder>40</loadorder>
 	</properties>
 	<base>
 		<!-- Campaign -->		
 		<includefile source="campaign/record_char.xml" />
 		<includefile source="campaign/record_char_main.xml" />
+		<includefile source="campaign/record_power.xml" />
 		<includefile source="campaign/record_char_inventory.xml" />
 		<includefile source="campaign/template_char.xml" />
 		<script name="CharManager2" file="campaign/scripts/manager_char2.lua" />

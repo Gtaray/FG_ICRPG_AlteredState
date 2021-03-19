@@ -8,6 +8,18 @@
 <root>
     <windowclass name="charsheet_main" merge="join">
         <sheetdata>
+            <frame_char name="statsframe">
+				<anchored width="210" height="280">
+					<top>
+						<parent>defenseframe</parent>
+						<anchor>bottom</anchor>
+					</top>
+					<left>
+						<offset>20</offset>
+					</left>
+				</anchored>
+			</frame_char>
+
             <!-- EFFORT LABELS -->
             <frame_char name="effortframe">
 				<anchored height="280">
@@ -42,7 +54,7 @@
 			</number_charefforttotal>
             <string_chareffortlabel name="augmented_label" insertbefore="ultimate">
 				<anchored to="augmented" />
-				<static textres="AUGMENTED" />
+				<static textres="AUGMENT" />
 			</string_chareffortlabel>
             <number_chareffortbase name="augmented_base" source="effort.augmented.base" insertbefore="ultimate">
 				<anchored to="augmented" />
@@ -88,10 +100,10 @@
 			</number_charefforttotal>
 
             <!-- SURGE and RAGE -->
-            <number_surge name="surge" source="surge" insertbefore="skillframe">
+            <number_surge name="surge" source="surge">
                 <anchored to="ultimate"/>
             </number_surge>
-            <string_surgelabel name="surge_label" insertbefore="skillframe">
+            <string_surgelabel name="surge_label" >
                 <anchored to="surge" />
                 <static textres="SURGE" />
             </string_surgelabel>

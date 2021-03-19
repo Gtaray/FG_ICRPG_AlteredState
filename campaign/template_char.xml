@@ -43,7 +43,7 @@
 				end
 
                 function action(draginfo)
-					local rActor = ActorManager.getActor("pc", window.getDatabaseNode());
+					local rActor = ActorManager.resolveActor(window.getDatabaseNode());
 					ActionEffort.performRoll(draginfo, rActor, self.target[1], self.die[1]);
 					return true;
 				end
@@ -80,7 +80,7 @@
 
                 function action(draginfo)
                     local nodeChar = getDatabaseNode().getChild("..")
-                    local rActor = ActorManager.getActor("pc", nodeChar);
+                    local rActor = ActorManager.resolveActor(nodeChar);
                     local dice = getDice();
 
                     if dice and #dice > 0 then
@@ -96,13 +96,7 @@
     <template name="string_surgelabel">
 		<label>
             <font>charstatlabel</font>
-			<anchored position="righthigh" width="45" height="24">
-                <left>
-                    <parent>effortframe</parent>
-                    <anchor>left</anchor>
-                    <offset>15</offset>
-                </left>
-            </anchored>
+			<anchored position="lefthigh" offset="10,0" height="24" />
 			<static />
 		</label>
 	</template>
@@ -135,7 +129,7 @@
 
                 function action(draginfo)
                     local nodeChar = getDatabaseNode().getChild("..")
-                    local rActor = ActorManager.getActor("pc", nodeChar);
+                    local rActor = ActorManager.resolveActor(nodeChar);
                     local aDice = getDice();
                     
                     if aDice and #aDice > 0 then

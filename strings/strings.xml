@@ -8,7 +8,10 @@
 <root>
     <string name="AUGMENTED">AUGMENTED</string>
     <string name="AUGMENT">AUGMENT</string>
+    <string name="AUG">AUG</string>
     <string name="GUN">GUN</string>
+    <string name="HEAL">HEAL</string>
+    <string name="ULT">ULT</string>
     <string name="HEALING">HEALING</string>
     <string name="SURGE">SURGE</string>
     <string name="RAGE">RAGE</string>
