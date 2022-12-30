@@ -4,16 +4,8 @@
 	Please see the license.html file included with this distribution for 
 	attribution and copyright information.
 -->
-
-<root>
-	<windowclass name="charsheet" merge="join">
-        <placement>
-			<size width="525" height="600" />
-		</placement>
-		<sizelimits>
-            <minimum width="525" height="600" />
-			<dynamic />
-        </sizelimits>
+<root>	
+	<windowclass name="charsheet_overview" merge="join">
         <script>
 			function onInit()
 				if User.isLocal() then
@@ -22,18 +14,12 @@
 					localportrait.setVisible(true);
 				end
 			end
-
-			function onDrop(x, y, draginfo)
-				if draginfo.isType("deathtimer") then
-					ActionDeathTimer.setDyingTimer(getDatabaseNode(), draginfo.getNumberData())
-				end
-			end
 		</script>
         <sheetdata>
             <string_labeled name="name">
                 <anchored to="overviewframe" position="insidetopleft" offset="15,10" height="20" width="160" merge="replace" />
             </string_labeled>
-            <string_labeled name="type" insertbefore="main">
+            <string_labeled name="type">
                 <anchored to="overviewframe" position="insidetopleft" offset="180,10" height="20">
                     <right offset="-35" />
                 </anchored>
@@ -49,7 +35,7 @@
                 </script>
                 <labelres>char_label_archetype</labelres>
             </string_labeled>
-            <linkfield name="typelink" insertbefore="main">
+            <linkfield name="typelink">
                 <anchored to="type" position="right" offset="2,10" width="20" />
                 <description field="type" />
                 <closetoggle />
@@ -69,7 +55,7 @@
 
             <string_labeled name="bioform" merge="delete" />
             <linkfield name="bioformlink" merge="delete" />
-            <string_labeled name="consciousness" insertbefore="main">
+            <string_labeled name="consciousness">
                 <anchored to="overviewframe" position="insidetopleft" offset="15,33" height="20" width="140" />
                 <script>
                     function onDrop(x, y, draginfo)
@@ -83,7 +69,7 @@
                 </script>
                 <labelres>char_label_consciousness</labelres>
             </string_labeled>
-            <linkfield name="consciousnesslink" insertbefore="main">
+            <linkfield name="consciousnesslink">
                 <anchored to="consciousness" position="right" offset="2,7" width="20" />
                 <description field="consciousness" />
                 <closetoggle />
@@ -103,7 +89,7 @@
 
             <string_labeled name="archetype" merge="delete" />
             <linkfield name="archetypelink" merge="delete" />
-            <string_labeled name="skin" insertbefore="main">
+            <string_labeled name="skin" >
                 <anchored to="overviewframe" position="insidetopleft" offset="0,33" height="20">
                     <left parent="consciousnesslink" anchor="right" offset="5" />
                     <right offset="-35" />
@@ -120,7 +106,7 @@
                 </script>
                 <labelres>char_label_skin</labelres>
             </string_labeled>
-            <linkfield name="skinlink" insertbefore="main">
+            <linkfield name="skinlink">
                 <anchored to="skin" position="right" offset="2,7" width="20" />
                 <description field="skin" />
                 <closetoggle />

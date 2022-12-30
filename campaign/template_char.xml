@@ -141,7 +141,7 @@
         </diefield>
     </template>
 
-    <template name="button_char_inv_carried" merge="replace">
+    <template name="button_char_inv_carried">
 		<buttonfield>
 			<state icon="button_char_inv_none" tooltipres="char_tooltip_inv_none" />
 			<state icon="button_char_inv_carried" tooltipres="char_tooltip_inv_carried" />
